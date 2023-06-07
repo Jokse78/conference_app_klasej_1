@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block "title" %}
+    {{ object.title }}
+{% endblock %}
+
+{% block "content" %}
+    <h1>{{ object.title }}</h1>
+ {% if object.picture %}
+ <img src="{{ object.picture.url}}"> height="150px">
+{% endif %}
+    <div>Pradzia: {{ object.start_date }}</div>
+    <div>Pabaiga: {{ object.end_date }}</div>
+{{object.like_set.count }}
+    <h2>Renginiai:</h2>
+    <ol>
+        {% for event in object.event_set.all %}
+            <li>
+                <a href="{% url 'event-detail' event.id %}">
+                    {{ event.title }}
+                </a>
+                ({{ event.date }})
+                {% if user.is_authenticated %}
+                Dalyvauja {{event.visitors}}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}
+
+
+
+
+
+
+
+
+

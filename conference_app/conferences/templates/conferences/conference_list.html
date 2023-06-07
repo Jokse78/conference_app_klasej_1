@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block "title" %}
+Konferencijų sąrašas
+{% endblock %}
+
+{% block "content" %}
+    <ol>
+        {% for conference in object_list %}
+            <li>
+                <a href="{% url 'conference-detail' conference.id %}">{{ conference.title }}</a>
+<!--            <a href="/conferences/{{ conference.id }}">{{ conference.title }}</a>-->
+                ({{ conference.start_date }} - {{ conference.end_date }})
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

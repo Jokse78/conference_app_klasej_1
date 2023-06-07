@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block "title" %}
+  Renginiai
+{% endblock %}
+
+{% block "content" %}
+  <h1>Renginys: {{ renginys.title }}</h1>
+
+  <div>Pradžia: {{ renginys.date }}</div>
+  <div>Jau dalyvauja: {{ renginys.eventregistration_set.count }}</div>
+
+  <a href="/events/register/{{ renginys.id }}">Užsiregistruoti</a>
+  <a href="{% url 'register-visitor' renginys.id %}">Užsiregistruoti</a>
+{% endblock %}
